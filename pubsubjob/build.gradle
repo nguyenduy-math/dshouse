@@ -1,0 +1,85 @@
+// https://github.com/GoogleCloudPlatform/app-gradle-plugin
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.2.0'
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.bigdata'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-parent:2.4.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+//	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+//	implementation 'org.springframework.boot:spring-boot-starter-validation'
+//	implementation 'org.springframework.boot:spring-boot-starter-cache'
+//	implementation 'com.azure.spring:azure-spring-boot-starter-active-directory'
+
+	implementation 'com.azure:azure-security-keyvault-secrets:4.3.5'
+	implementation 'com.azure:azure-identity:1.4.2'
+
+//	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
+
+	implementation 'com.google.cloud:spring-cloud-gcp-pubsub-stream-binder'
+	implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
+	implementation 'org.springframework.integration:spring-integration-core'
+	implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:3.7.4')
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework:spring-webflux'
+	testImplementation 'org.springframework.graphql:spring-graphql-test'
+}
+
+ext{
+	set('azureVersion',"3.14.0")
+}
+
+dependencyManagement{
+	imports{
+		mavenBom "com.azure.spring:azure-spring-boot-bom:${azureVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+appengine {  // App Engine tasks configuration
+	deploy {   // deploy configuration
+		projectId = 'GCLOUD_CONFIG' // delegate to project in gcloud config
+		version = 'GCLOUD_CONFIG'   // delegate to gcloud to generate a version
+	}
+}

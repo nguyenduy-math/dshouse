@@ -1,0 +1,1 @@
+AZURE_CLIENT_ID=0e15ebd5-a17e-4e53-ab42-dac9cd690d19;AZURE_CLIENT_SECRET=68c8Q~7M2yq.jP-4eQDYX6sAI7LWNsJuBDOWzb_A;AZURE_TENANT_ID=c596bb4b-3af1-420f-89f1-672f8c6dce60;ENTITY_MAPPING_FILE_PATH=src/main/resources/entityMapping.json;KEY_VAULT_URL=https://asakeyvaults8mcoij.vault.azure.net/
