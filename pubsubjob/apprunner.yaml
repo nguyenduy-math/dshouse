@@ -13,9 +13,9 @@ build:
       - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
       - java --version
       - gradle --version
-      - gradle wrapper --gradle-version 7.0
+      - ./gradlew wrapper --gradle-version=8.5 --distribution-type=bin
     build:
-      - gradle clean build --stacktrace
+      - ./gradlew clean build --stacktrace
     post-build:
       - ls build/libs
 run:
