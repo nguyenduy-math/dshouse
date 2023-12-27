@@ -18,7 +18,6 @@ run:
   command: java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
   network:
     port: 8080
-    env: MY_APP_PORT
   env:
     - name: AZURE_CLIENT_ID
       value: "0e15ebd5-a17e-4e53-ab42-dac9cd690d19"
