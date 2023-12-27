@@ -14,6 +14,7 @@ build:
     build:
       - java --version
       - gradle --version
+      - gradle wrapper --gradle-version 7.0
       - gradle clean build --stacktrace
       - ls build/libs
 run:
