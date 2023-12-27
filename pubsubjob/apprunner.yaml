@@ -13,8 +13,7 @@ build:
       - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
     build:
       - ./gradlew clean build
-run: 
-  runtime-version: 11.0.13.08.1                             
+run:
   command: java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
   network:
     port: 8080
