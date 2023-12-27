@@ -13,7 +13,8 @@ build:
       - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
     build:
       - java --version
-      - gradle clean build
+      - gradle --version
+      - gradle clean build --stacktrace
       - ls build/libs
 run:
   command: java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
