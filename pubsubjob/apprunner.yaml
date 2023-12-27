@@ -14,7 +14,7 @@ build:
     build:
       - ./gradlew clean build
 run:
-  command: java -Xms256m -jar pubsubjob-0.0.1-SNAPSHOT.jar .
+  command: java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
 #  network:
 #    port: 8080
   env:
