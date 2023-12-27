@@ -1,0 +1,10 @@
+version: 1.0
+runtime: corretto11
+build:
+  commands:    
+    pre-build:
+      - chmod 777 gradlew
+    build:
+      - ./gradlew clean build
+run:                              
+  command: java -Xms256m -jar target/MyApp-1.0-SNAPSHOT.jar .
