@@ -11,11 +11,12 @@ build:
       - export KEY_VAULT_URL="https://asakeyvaults8mcoij.vault.azure.net/"
       - export GOOGLE_CLOUD_PROJECT="ilearnglc"
       - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
-    build:
       - java --version
       - gradle --version
       - gradle wrapper --gradle-version 7.0
+    build:
       - gradle clean build --stacktrace
+    post-build:
       - ls build/libs
 run:
   command: java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
