@@ -11,8 +11,9 @@ build:
       - ./gradlew build --stacktrace
     post-build:
       - ls build/libs
+      - copy build/libs/pubsubjob-0.0.1-SNAPSHOT.jar app.jar
 run:
-  command: java -Xms256m -jar target/pubsubjob-0.0.1-SNAPSHOT.jar .
+  command: java -Xms256m -jar /app/pubsubjob/app.jar .
   network:
     port: 8080
   env:
