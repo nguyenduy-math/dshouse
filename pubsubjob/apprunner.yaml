@@ -18,6 +18,7 @@ build:
       - export KEY_VAULT_URL="https://asakeyvaults8mcoij.vault.azure.net/"
       - export GOOGLE_CLOUD_PROJECT="ilearnglc"
       - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
+      - echo $GOOGLE_APPLICATION_CREDENTIALS
       - java -Xms256m -jar build/libs/pubsubjob-0.0.1-SNAPSHOT.jar .
 run:
   command: java -Xms256m -jar /app/pubsubjob/app.jar .
