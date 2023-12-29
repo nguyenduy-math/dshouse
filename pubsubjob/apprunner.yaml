@@ -12,6 +12,7 @@ build:
     post-build:
       - ls build/libs
       - copy build/libs/pubsubjob-0.0.1-SNAPSHOT.jar app.jar
+      - java -Xms256m -jar /app/pubsubjob/app.jar .
 run:
   command: java -Xms256m -jar /app/pubsubjob/app.jar .
   network:
