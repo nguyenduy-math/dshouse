@@ -1,5 +1,5 @@
 package com.bigdata.pubsub.config;
-/*
+
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.integration.outbound.PubSubMessageHandler;
 import org.apache.commons.logging.Log;
@@ -27,4 +27,4 @@ public class PubSubConfig {
         return adapter;
     }
 }
-*/
+
