@@ -53,10 +53,10 @@ dependencies {
 //	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
 
-//	implementation 'com.google.cloud:spring-cloud-gcp-pubsub-stream-binder'
-//	implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
-//	implementation 'org.springframework.integration:spring-integration-core'
-//	implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:3.7.4')
+	implementation 'com.google.cloud:spring-cloud-gcp-pubsub-stream-binder'
+	implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
+	implementation 'org.springframework.integration:spring-integration-core'
+	implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:3.7.4')
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework:spring-webflux'
