@@ -52,6 +52,8 @@ dependencies {
 
 	implementation 'org.mongodb:bson:4.4.2'
 
+	implementation 'software.amazon.awssdk:sqs'
+
 //	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
 
