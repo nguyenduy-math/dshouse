@@ -1,0 +1,40 @@
+version: 1.0
+runtime: corretto11
+build:
+  commands:    
+    pre-build:
+      - chmod 777 gradlew
+      - java --version
+      - gradle --version
+      - ./gradlew wrapper --gradle-version=8.5 --distribution-type=bin
+    build:
+      - ./gradlew build --stacktrace
+    post-build:
+      - ls build/libs
+      - export AZURE_CLIENT_ID="0e15ebd5-a17e-4e53-ab42-dac9cd690d19"
+      - export AZURE_CLIENT_SECRET="68c8Q~7M2yq.jP-4eQDYX6sAI7LWNsJuBDOWzb_A"
+      - export AZURE_TENANT_ID="c596bb4b-3af1-420f-89f1-672f8c6dce60"
+      - export ENTITY_MAPPING_FILE_PATH="src/main/resources/entityMapping.json"
+      - export KEY_VAULT_URL="https://asakeyvaults8mcoij.vault.azure.net/"
+      - export GOOGLE_CLOUD_PROJECT="ilearnglc"
+      - export GOOGLE_APPLICATION_CREDENTIALS="src/main/resources/gcp-credential.json"
+      - echo $GOOGLE_APPLICATION_CREDENTIALS
+run:
+  command: java -Xms256m -jar build/libs/ilearnapprunner-0.0.1-SNAPSHOT.jar .
+  network:
+    port: 80
+  env:
+    - name: AZURE_CLIENT_ID
+      value: "0e15ebd5-a17e-4e53-ab42-dac9cd690d19"
+    - name: AZURE_CLIENT_SECRET
+      value: "68c8Q~7M2yq.jP-4eQDYX6sAI7LWNsJuBDOWzb_A"
+    - name: AZURE_TENANT_ID
+      value: "c596bb4b-3af1-420f-89f1-672f8c6dce60"
+    - name: ENTITY_MAPPING_FILE_PATH
+      value: "src/main/resources/entityMapping.json"
+    - name: KEY_VAULT_URL
+      value: "0e15ebd5-a17e-4e53-ab42-dac9cd690d19"
+    - name: GOOGLE_CLOUD_PROJECT
+      value: "ilearnglc"
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: "src/main/resources/gcp-credential.json"

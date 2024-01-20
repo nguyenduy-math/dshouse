@@ -1,0 +1,19 @@
+runtime: java17
+env: standard
+# remember to use an instance class compatible with your scaling type
+instance_class: B1
+handlers:
+  - url: .*
+    script: auto
+basic_scaling:
+  max_instances: 1
+  idle_timeout: 10m
+service_account: ilearnglc@appspot.gserviceaccount.com
+env_variables:
+  GOOGLE_APPLICATION_CREDENTIALS: 'src/main/resources/gcp-credential.json'
+  GOOGLE_CLOUD_PROJECT: 'ilearnglc'
+  AZURE_CLIENT_ID: '0e15ebd5-a17e-4e53-ab42-dac9cd690d19'
+  AZURE_CLIENT_SECRET: '68c8Q~7M2yq:jP-4eQDYX6sAI7LWNsJuBDOWzb_A'
+  AZURE_TENANT_ID: 'c596bb4b-3af1-420f-89f1-672f8c6dce60'
+  ENTITY_MAPPING_FILE_PATH: 'src/main/resources/entityMapping.json'
+  KEY_VAULT_URL: 'https://asakeyvaults8mcoij.vault.azure.net/'
