@@ -74,13 +74,13 @@ dependencies {
 
 ext{
 	set('azureVersion',"3.14.0")
-	set('springCloudVersion', "2023.0.0")
+	// set('springCloudVersion', "2023.0.0")
 }
 
 dependencyManagement{
 	imports{
 		mavenBom "com.azure.spring:azure-spring-boot-bom:${azureVersion}"
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		// mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
 
