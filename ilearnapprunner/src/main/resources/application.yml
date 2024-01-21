@@ -8,6 +8,8 @@ springdoc:
     path: /api-docs
 
 spring:
+#  main:
+#    allow-bean-definition-overriding: true
   mongodb:
     embedded:
       version: 4.0.21
@@ -27,7 +29,8 @@ data:
 #    tenant-id: c596bb4b-3af1-420f-89f1-672f8c6dce60
 
 aws:
-  accessKeyId: AKIAWWQHU3SD3FEH5DY4
-  secretKey: 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
-  region: ap-southeast-1
-  queueName: https://sqs.ap-southeast-1.amazonaws.com/460651289735/ilearnsqs
+  sqs:
+    accessKeyId: AKIAWWQHU3SD3FEH5DY4
+    secretKey: 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
+    region: ap-southeast-1
+    queueName: https://sqs.ap-southeast-1.amazonaws.com/460651289735/ilearnsqs
