@@ -30,7 +30,7 @@ data:
 
 aws:
   sqs:
-    accessKeyId: AKIAWWQHU3SD2VUYO3E3
-    secretKey: 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
+    accessKeyId: x
+    secretKey: x
     region: ap-southeast-1
     queueName: https://sqs.ap-southeast-1.amazonaws.com/460651289735/ilearnsqs
