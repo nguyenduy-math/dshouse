@@ -21,11 +21,20 @@ ext {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-parent:2.4.0'
+//	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.google.cloud:spring-cloud-gcp-pubsub-stream-binder'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+
 	implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
+	implementation 'com.google.cloud:spring-cloud-gcp-pubsub-stream-binder'
 
 	implementation 'com.azure.spring:spring-cloud-azure-starter-storage-blob'
+	implementation 'org.projectlombok:lombok:1.18.22'
+//	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
+//	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
+//	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.15'
+//	implementation 'org.springdoc:springdoc-openapi-security:1.6.15'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -17,7 +17,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 //https://cloud.google.com/pubsub/docs/spring
-@Configuration
+//@Configuration
 public class PubSubConfig {
     private static final Log LOGGER = LogFactory.getLog(PubSubConfig.class);
     /*@Bean
