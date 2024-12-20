@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+#springdoc:
+#  swagger-ui:
+#    path: /api-docs
+#  api-docs:
+#    path: /api-docs
+
+spring:
+  mongodb:
+    embedded:
+      version: 4.0.21
+
+  data:
+    mongodb:
+      uri: ${mongo_conn}
+      database: ${mongo_db}
+
+data:
+  default-page-size: 500
+
+#azure:
+#  activedirectory:
+#    client-id: ${azure_ad_client_id}
+#    app-id-uri: ${azure_ad_app_id}
+#    tenant-id: ${azure_ad_tenant_id}
+
+azure-storage:
+  connectionString: ${azure_stor_conn}
+  container: ${azure_stor_container}
+#  sasToken: ${azure_stor_sass}
+#  account:
+#  accountKey:
+
+redis:
+  hostname: ${redis_hostname}
+  port: ${redis_port}
+  password: ${redis_password}
+
+rest:
+  template:
+    timeout:
+      read: 30000
+      connect: 30000
