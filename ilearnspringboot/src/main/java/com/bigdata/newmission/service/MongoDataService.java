@@ -18,4 +18,8 @@ public class MongoDataService {
         doc.setDocId(id);
         return mongoDataRepository.createAzureBlobDoc(doc, collName);
     }
+
+    public Boolean createAzureBlobDoc(AzureBlob azureBlob, String collName){
+        return mongoDataRepository.createAzureBlobDoc(azureBlob, collName);
+    }
 }

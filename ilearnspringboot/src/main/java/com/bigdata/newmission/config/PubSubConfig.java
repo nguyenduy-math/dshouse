@@ -16,38 +16,41 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
+
 //https://cloud.google.com/pubsub/docs/spring
-//@Configuration
+@Configuration
 public class PubSubConfig {
     private static final Log LOGGER = LogFactory.getLog(PubSubConfig.class);
-    /*@Bean
+
+    @Bean
     @ServiceActivator(inputChannel = "pubsubOutputChannel")
     public MessageHandler messageSender(PubSubTemplate pubsubTemplate) {
         PubSubMessageHandler adapter = new PubSubMessageHandler(pubsubTemplate, "ilearnpubsub");
 
         adapter.setSuccessCallback(
-                ((ackId, message) ->
-                        LOGGER.info("Message was sent via the outbound channel adapter to ilearnpubsub!")));
+                ((ackId, message) -> LOGGER
+                        .info("Message was sent via the outbound channel adapter to ilearnpubsub!")));
 
         adapter.setFailureCallback(
                 (cause, message) -> LOGGER.info("Error sending " + message + " due to " + cause));
 
         return adapter;
-    }*/
+    }
 
-    @Bean
+    /*@Bean
     public MessageChannel inputMessageChannel() {
         return new PublishSubscribeChannel();
     }
 
-    // Create an inbound channel adapter to listen to the subscription `sub-one` and send
+    // Create an inbound channel adapter to listen to the subscription `sub-one` and
+    // send
     // messages to the input message channel.
     @Bean
     public PubSubInboundChannelAdapter inboundChannelAdapter(
             @Qualifier("inputMessageChannel") MessageChannel messageChannel,
             PubSubTemplate pubSubTemplate) {
-        PubSubInboundChannelAdapter adapter =
-                new PubSubInboundChannelAdapter(pubSubTemplate, "ilearnpubsubsubscription");
+        PubSubInboundChannelAdapter adapter = new PubSubInboundChannelAdapter(pubSubTemplate,
+                "ilearnpubsubsubscription");
         adapter.setOutputChannel(messageChannel);
         adapter.setAckMode(AckMode.MANUAL);
         adapter.setPayloadType(String.class);
@@ -61,5 +64,5 @@ public class PubSubConfig {
             @Header(GcpPubSubHeaders.ORIGINAL_MESSAGE) BasicAcknowledgeablePubsubMessage message) {
         LOGGER.info("Message arrived via an inbound channel adapter from ilearnpubsub! Payload: " + payload);
         message.ack();
-    }
+    }*/
 }

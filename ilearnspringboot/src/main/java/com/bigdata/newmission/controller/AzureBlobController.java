@@ -1,8 +1,11 @@
 package com.bigdata.newmission.controller;
 
 import com.bigdata.newmission.domain.FileDTO;
+import com.bigdata.newmission.redis.model.RedisCompany;
+import com.bigdata.newmission.redis.service.RedisCompanyService;
 import com.bigdata.newmission.service.AzureBlobService;
 import com.bigdata.newmission.service.MongoDataService;
+import com.bigdata.newmission.service.VaultService;
 import com.bigdata.newmission.utility.Constant;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,33 +17,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.messaging.MessageHandler;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping(value="/api/azure")
+@RequestMapping(value = "/api/azure")
 public class AzureBlobController {
-//    private final HttpServletRequest httpServletRequest;
-
-    @Autowired
-    private MongoDataService mongoDataService;
+    // private final HttpServletRequest httpServletRequest;
 
     @Autowired
     private AzureBlobService azureBlobService;
 
-    @GetMapping(value="/test")
-    public ResponseEntity<?> test(){
-        return new ResponseEntity<>(mongoDataService.getCount("companies"), HttpStatus.OK);
-    }
+    @Autowired
+    private VaultService vaultService;
 
-    @GetMapping(value="/getBlob", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity getAzureBlob(@RequestHeader Map<String, String> headers){
-        String blobName = headers.get(Constant.AzureBlobHeaders.HEADER_BLOBNAME);
-        FileDTO fileDTO = azureBlobService.getBlob(blobName);
-        if (fileDTO == null){
+    @GetMapping(value = "/getBlob/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public ResponseEntity getAzureBlob(@PathVariable String id) {
+        FileDTO fileDTO = azureBlobService.getBlob(id);
+        if (fileDTO == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
@@ -51,17 +51,19 @@ public class AzureBlobController {
         return new ResponseEntity(isR, headersResponse, HttpStatus.OK);
     }
 
-    @PutMapping(value="/uploadBlob")
+    @PutMapping(value = "/uploadBlob", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> putAzureBlob(@RequestHeader Map<String, String> headers,
-                                       @RequestBody(required = false) InputStreamResource file) {
-        String blobName = headers.get(Constant.AzureBlobHeaders.HEADER_BLOBNAME);
-        String docId = UUID.randomUUID().toString();
-        if (file != null && file.exists()){
-            if (azureBlobService.uploadBlob(null, file, docId)){
+            @RequestPart(required = false) MultipartFile file) throws Exception {
+        String blobName = headers.get(Constant.AzureBlobHeaders.HEADER_AZURE_BLOB_NAME);
+        if (file != null && !file.isEmpty()) {
+            Map<String, String> meta = new HashMap<>();
+            meta.put("blobName", blobName);
+            var azureBlob = azureBlobService.uploadBlob(meta, file.getInputStream());
 
-                mongoDataService.createAzureBlobDoc(docId, "azureblogdocs");
+            var token = vaultService.token();
 
-                return new ResponseEntity<>(docId, HttpStatus.CREATED);
+            if (azureBlob != null) {
+                return new ResponseEntity<>(azureBlob, HttpStatus.CREATED);
             }
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);

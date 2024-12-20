@@ -22,6 +22,9 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-parent:2.4.0'
 //	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
@@ -40,6 +43,24 @@ dependencies {
 	//implementation 'org.mongodb:bson:4.4.2'
 	implementation 'org.mongodb:mongodb-driver-core:4.7.0'
 	implementation 'org.mongodb:mongodb-driver-sync:4.7.0'
+
+//	implementation 'com.querydsl:mongodb-querydsl:5.0.0'
+//	implementation 'com.querydsl:mongodb-apt:5.0.0'
+//	implementation 'com.querydsl:mongodb-jpa:5.0.0'
+	implementation 'com.apptasticsoftware:rssreader:3.7.0'
+
+	implementation 'org.apache.httpcomponents.client5:httpclient5'
+
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'redis.clients:jedis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.1.1'
+	implementation 'org.springframework.cloud:spring-cloud-starter-vault-config:4.1.1'
+
+//	implementation 'com.azure.spring:spring-cloud-azure-dependencies:5.13.0'
+//	implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
