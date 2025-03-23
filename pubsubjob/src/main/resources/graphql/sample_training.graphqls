@@ -1,0 +1,9 @@
+type Companies {
+    id: ID
+    name: String
+}
+
+type Query {
+    getAllModels: [Companies]
+    getModelById(id: ID!): Companies
+}

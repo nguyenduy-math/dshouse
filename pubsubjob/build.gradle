@@ -40,7 +40,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-parent:2.4.0'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-//	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 //	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -57,6 +57,16 @@ dependencies {
 //	implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
 //	implementation 'org.springframework.integration:spring-integration-core'
 //	implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:3.7.4')
+
+	// GraphQL dependencies
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java-kickstart:voyager-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java-kickstart:altair-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java:graphql-java-extended-scalars:17.0'
+
+	// Hibernate Validator dependency
+	implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework:spring-webflux'
